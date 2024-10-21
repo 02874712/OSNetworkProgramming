@@ -94,25 +94,21 @@ int main(int argc, char const* argv[])
                   sprintf(sbuf, "%s%d", ACK, val);
                   list_add_at_index(mylist, val, idx);
                 }
-                printf("client called add_position!\n");
             }
             else if (strcmp(token,"remove_back") == 0){
                 val = list_remove_from_back(mylist);
-                sprintf(sbuf, "%s%d", ACK, val);
-                printf("client called remove_back!\n");                
+                sprintf(sbuf, "%s%d", ACK, val);              
             }
             else if (strcmp(token,"remove_front") == 0){
                 val = list_remove_from_front(mylist);
                 sprintf(sbuf, "%s%d", ACK, val);
-                printf("client called remove_front!\n");
             }
-						else if(strcmp(token,"remove_position") == 0){
+            else if(strcmp(token,"remove_position") == 0){
 							  token = strtok(NULL, " ");
 								idx = atoi(token);
 								// Make a Call
 								val = list_remove_at_index(mylist,idx);
 								sprintf(sbuf,"%s%d", ACK, val);
-                printf("client called remove_position!\n");
 						}
             else if(strcmp(token,"get") == 0){
                 token = strtok(NULL, " ");
@@ -120,15 +116,11 @@ int main(int argc, char const* argv[])
                 //  Make a Call
                 val = list_get_elem_at(mylist, idx);
                 sprintf(sbuf,"%s%d", ACK, val);
-                printf("client called get!\n");
             }
 						else if(strcmp(token,"print") == 0){
 							  sprintf(sbuf,"%s", listToString(mylist));
-                printf("client called print!\n");
+
 						}
-						// ADD THE OTHER OPERATIONS
-
-
 
                 // send's messages to client socket 
             send(clientSocket, sbuf, sizeof(sbuf), 0);
